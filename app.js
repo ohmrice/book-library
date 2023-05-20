@@ -62,7 +62,6 @@ function generateCard(book) {
     }
     const readDiv = document.createElement('div');
     readDiv.classList.add('read-div');
-    const readText = document.createElement('p');
     const readStatusBtn = document.createElement('button');
     readStatusBtn.classList.add('read-button');
     readStatusBtn.textContent = "Edit";
@@ -70,21 +69,24 @@ function generateCard(book) {
     readStatusBtn.addEventListener("click", () => {
         if(book.isRead) {
             book.isRead = false;
-            readText.textContent = 'Not read';
+            readStatusBtn.textContent = 'Not read';
+            readStatusBtn.classList.remove('book-read');
         } else {
             book.isRead = true;
-            readText.textContent = 'Read';
+            readStatusBtn.textContent = 'Read';
+            readStatusBtn.classList.add('book-read');
         }
     });
     
     if (book.isRead) {
-        readText.textContent = 'Read';
+        readStatusBtn.textContent = 'Read';
+        readStatusBtn.classList.add('book-read');
     } else {
-        readText.textContent = 'Not read';
+        readStatusBtn.textContent = 'Not read';
     }
     
     const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('icon-style');
+    deleteBtn.classList.add('delete-style');
     deleteBtn.setAttribute('type','button');
     deleteBtn.textContent = "X";
     
@@ -92,10 +94,8 @@ function generateCard(book) {
         const searchIndex = library.findIndex((el) => el.title === book.title);
         library.splice(searchIndex, 1);
         bookCard.remove();
-        console.table(library);
     });
     
-    readDiv.appendChild(readText);
     readDiv.appendChild(readStatusBtn);
     bookCard.appendChild(titleHeader);
     bookCard.appendChild(authorText);

@@ -4,11 +4,25 @@ html, * {
     font-family: 'AzeriSansRegular', sans-serif;
 }
 
+:root {
+    --main-font-color: rgb(99, 77, 62);
+    --secondary-font-color: rgb(43, 133, 118);
+    --light-font-color: rgb(255, 246, 246);
+    --shadow: 5px 5px 10px rgb(183, 203, 207),
+            -5px 5px 10px rgb(183, 203, 207);
+    --main-background-color: rgb(232, 240, 241);
+    --form-background-color: rgb(199, 211, 158);
+    --card-background-color: rgb(255, 245, 235);
+}
+
 body {
     width: 100vw;
+    background-color: var(--main-background-color);
+    color: var(--main-font-color);
 }
 
 .main-container {
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +30,7 @@ body {
 }
 
 .add-container {
-    margin-top: 100px;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,20 +38,31 @@ body {
 }
 
 #new-book-button {
-    font-size: inherit;
+    font-size: 1.2em;
+    font-weight: 700;
     margin: 50px;
     height: 70px;
-    width: 150px;
+    width: 170px;
     cursor: pointer;
+    background-color:rgb(147, 191, 207);
+    border-radius: 5px;
+    border: none;
+    box-shadow: var(--shadow);
+    color: var(--light-font-color);
+    transition: all 0.3s ease;
+}
+
+#new-book-button:hover {
+    background-color:rgb(97, 133, 146);
 }
 
 .form-container {
     display: none;
-    width: 500px;
-    background-color: rgb(234, 243, 243);
+    width: 80%;
+    background-color: var(--form-background-color);
     border-radius: 10px;
     margin-bottom: 30px;
-    box-shadow: 5px 5px 10px rgb(201, 197, 197);
+    box-shadow: var(--shadow);
 }
 
 .form {
@@ -49,11 +74,85 @@ body {
     font-size: 20px;
 }
 
+@media only screen and (max-width: 600px) {
+    .form-container {
+        width: 100%;
+    }
+    .form {
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        align-self: start;
+    }
+}
+
+label {
+    font-weight: 700;
+}
+
 .input-box {
     font-size: inherit;
     border: none;
     height: 30px;
     border-radius: 4px;
+    background-color: rgb(247, 241, 235);
+    box-shadow: 1px -1px 3px rgb(196, 183, 183);
+    padding-left: 5px;
+}
+
+.input-box:focus {
+    outline: none;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color:rgb(247, 241, 235);
+    margin: 0;
+    font: inherit;
+    color: var(--main-font-color);
+    width: 1.2em;
+    height: 1.2em;
+    border: 0.15em solid var(--main-font-color);
+    border-radius: 2px;
+    transform: translate(-1.5em, 1em);
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.7em;
+    height: 0.7em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em rgb(190, 118, 118);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+#submit-button {
+    border: none;
+    height: 2em;
+    width: 100px;
+    border-radius: 5px;
+    background-color: rgb(190, 118, 118);
+    color: var(--light-font-color);
+    box-shadow: 2px 2px 5px rgb(119, 116, 116),
+                -2px 2px 5px rgb(119, 116, 116);
+    transition: all 0.3s ease;
+}
+
+#submit-button:hover {
+    background-color: rgb(124, 84, 84);
 }
 
 .read-container, #submit-button {
@@ -68,9 +167,8 @@ body {
 }
 
 .library-container {
-    background-color: rgb(236, 229, 236);
     width: 70%;
-
+    margin-bottom: 80px;
 }
 
 .library-grid {
@@ -86,37 +184,57 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    background-color: rgb(217, 231, 231);
-    border: 2px solid black;
+    background-color: var(--card-background-color);
     border-radius: 5px;
-    padding: 30px 30px 30px 20px;
+    padding: 30px 40px 30px 20px;
+    box-shadow: var(--shadow);
 }
 
 .book-card > *:not(:last-child) {
     margin-bottom: 15px;
 }
 
-.read-div {
-    display: flex;
-    justify-content: space-between;
+.book-card > :first-child {
+    color: var(--secondary-font-color);
+    padding-bottom: 5px;
 }
+
 .read-button {
-
+    position: absolute;
+    width: 120px;
+    bottom: 25px;
+    font-size: 1.2em;
+    color: var(--light-font-color);
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(223, 119, 106);
+    border: none;
+    transition: all 0.3s ease;
 }
 
-.icon-style {
+.read-button:hover, .read-button.book-read:hover {
+    background-color: rgb(66, 56, 56);
+}
+
+.read-button.book-read {
+    background-color: rgb(149, 168, 102);
+    
+}
+
+.delete-style {
     font-family: 'ArchitectsDaughterRegular', sans-serif;
     font-size: 1.3em;
     color: rgba(170, 61, 103,0.1);
     border: none;
     background: none;
     position: absolute;
-    top: 0;
-    right: 5px;
+    top: 5px;
+    right: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.icon-style:hover {
+.delete-style:hover {
     color: rgba(170, 61, 103);
 }
