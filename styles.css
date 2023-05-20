@@ -16,13 +16,13 @@ html, * {
 }
 
 body {
-    width: 100vw;
+    width: 100%;
+    height: auto;
     background-color: var(--main-background-color);
     color: var(--main-font-color);
 }
 
 .main-container {
-    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,8 +61,8 @@ body {
     width: 80%;
     background-color: var(--form-background-color);
     border-radius: 10px;
-    margin-bottom: 30px;
     box-shadow: var(--shadow);
+    margin-bottom: 2rem;
 }
 
 .form {
@@ -85,6 +85,10 @@ body {
     }
     label {
         align-self: start;
+    }
+
+    footer > *{
+        font-size: 1.4rem;
     }
 }
 
@@ -168,7 +172,8 @@ input[type="checkbox"]:checked::before {
 
 .library-container {
     width: 70%;
-    margin-bottom: 80px;
+    min-height: 70vh;
+    margin-bottom: 60px;
 }
 
 .library-grid {
@@ -237,4 +242,23 @@ input[type="checkbox"]:checked::before {
 
 .delete-style:hover {
     color: rgba(170, 61, 103);
+}
+
+footer {
+    font-family: 'LachataNormal', sans-serif; 
+    font-size: 2rem;
+    text-align: center;
+    height: 5rem;
+    width: 100%;
+}
+
+footer > a {
+    color: var(--main-font-color);
+    font-family: inherit;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+footer > a:hover {
+    text-shadow: 1px 1px 10px rgb(192, 176, 176);
 }
