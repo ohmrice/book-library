@@ -27,10 +27,6 @@ function Book(title, author, pages, isRead) {
     this.isRead = isRead
 }
 
-const tempBook = new Book('Beyond Good and Evil', 'Friedrich Nietzsche', 240, false);
-library.push(tempBook);
-generateCard(library[0]);
-
 function addBook() {
     const bookTitle = document.getElementById("title");
     const bookAuthor = document.getElementById("author");
@@ -58,6 +54,7 @@ function generateCard(book) {
     const authorText = document.createElement('p');
     authorText.textContent = book.author;
     const pagesText = document.createElement('p');
+    
     if (parseInt(book.pages) > 1) {
         pagesText.textContent = `${book.pages} pages`;
     } else if (parseInt(book.pages) === 1) {
@@ -66,7 +63,6 @@ function generateCard(book) {
     const readDiv = document.createElement('div');
     readDiv.classList.add('read-div');
     const readText = document.createElement('p');
-
     const readStatusBtn = document.createElement('button');
     readStatusBtn.classList.add('read-button');
     readStatusBtn.textContent = "Edit";
@@ -87,12 +83,35 @@ function generateCard(book) {
         readText.textContent = 'Not read';
     }
     
+    const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('icon-style');
+    deleteBtn.setAttribute('type','button');
+    deleteBtn.textContent = "X";
+    
+    deleteBtn.addEventListener("click", () => {    
+        const searchIndex = library.findIndex((el) => el.title === book.title);
+        library.splice(searchIndex, 1);
+        bookCard.remove();
+        console.table(library);
+    });
+    
     readDiv.appendChild(readText);
     readDiv.appendChild(readStatusBtn);
     bookCard.appendChild(titleHeader);
     bookCard.appendChild(authorText);
     bookCard.appendChild(pagesText);
     bookCard.appendChild(readDiv);
+    bookCard.appendChild(deleteBtn);
     libraryGrid.appendChild(bookCard);
 }
 
+//generate books to populate the library
+const tempBook1 = new Book('Beyond Good and Evil', 'Friedrich Nietzsche', 240, false);
+library.push(tempBook1);
+generateCard(library[0]);
+const tempBook2 = new Book('Necronomicon: The Best Weird Tales of H.P. Lovecraft', 'H.P. Lovecraft', 878, true);
+library.push(tempBook2);
+generateCard(library[1]);
+const tempBook3 = new Book('The Silence of the Lambs', 'Thomas Harris', 352, true);
+library.push(tempBook3);
+generateCard(library[2]);
