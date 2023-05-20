@@ -1,9 +1,21 @@
 html, * {
     margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .add-container {
-    margin-top: 200px;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,6 +33,7 @@ html, * {
     display: none;
     width: 500px;
     background-color: rgb(234, 243, 243);
+    margin-bottom: 30px;
 }
 
 .form {
@@ -48,4 +61,40 @@ html, * {
     grid-row-start: 5;
     font-size: inherit;
     cursor: pointer;
+}
+
+.library-container {
+    display: none;
+    background-color: rgb(233, 203, 233);
+    width: 70%;
+    height: 800px;
+}
+
+.library-grid {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.book-card {
+    font-size: 1.1em;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: rgb(217, 231, 231);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 30px 30px 30px 20px;
+}
+
+.book-card > *:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.read-div {
+    display: flex;
+    justify-content: space-between;
+}
+.read-button {
+
 }

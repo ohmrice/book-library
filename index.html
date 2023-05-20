@@ -9,22 +9,28 @@
     <title>Book Library</title>
 </head>
 <body>
-    <div class="add-container">
-        <button id="new-book-button">Add New Book</button>
-        <div class="form-container">
-            <form class="form">
-                <label for="title">Title:</label>
-                <input class="input-box" type="text" name="title" id="title" />
-                <label for="author">Author:</label>
-                <input class="input-box" type="text" name="author" id="author" />
-                <label for="pages">Number of Pages:</label>
-                <input type="number" class="input-box" inputmode="numeric" id="pages" />
-                <div class="read-container">
-                    <input class="toggle" type="checkbox" name="read-toggle" id="read-toggle" />
-                    <label for="read-toggle">I have read this book</label>
-                </div>
-                <button type="submit" id="submit-button">Submit</button>
-            </form>
+    <div class="main-container">
+        <div class="add-container">
+            <button id="new-book-button">Add New Book</button>
+            <div class="form-container">
+                <form class="form">
+                    <label for="title">Title:</label>
+                    <input class="input-box" type="text" name="title" id="title" />
+                    <label for="author">Author:</label>
+                    <input class="input-box" type="text" name="author" id="author" />
+                    <label for="pages">Number of Pages:</label>
+                    <input type="number" class="input-box" inputmode="numeric" id="pages" />
+                    <div class="read-container">
+                        <input class="toggle" type="checkbox" name="read-toggle" id="read-toggle" />
+                        <label for="read-toggle">I have read this book</label>
+                    </div>
+                    <button type="submit" id="submit-button">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="library-container">
+            <div class="library-grid">
+            </div>
         </div>
     </div>
 </body>
