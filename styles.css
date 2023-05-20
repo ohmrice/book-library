@@ -184,8 +184,9 @@ input[type="checkbox"]:checked::before {
 
 .book-card {
     position: relative;
+    overflow: hidden;
     font-size: 1.1em;
-    height: 250px;
+    height: 280px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -195,7 +196,12 @@ input[type="checkbox"]:checked::before {
     box-shadow: var(--shadow);
 }
 
-.book-card > *:not(:last-child) {
+.book-card-title {
+    overflow: hidden;
+    width: calc(100%);
+}
+
+.book-card > *:not(:last-child) {    
     margin-bottom: 15px;
 }
 

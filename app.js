@@ -3,6 +3,7 @@ const submitBtn = document.getElementById("submit-button");
 const formContainer =  document.querySelector("div.form-container");
 const libraryContainer = document.querySelector("div.library-container");
 const libraryGrid = document.querySelector("div.library-grid");
+const checkBox = document.getElementById("read-toggle");
 
 newBookBtn.addEventListener("click", () => {
     showBookForm();
@@ -31,7 +32,6 @@ function addBook() {
     const bookTitle = document.getElementById("title");
     const bookAuthor = document.getElementById("author");
     const bookPages = document.getElementById("pages");
-    const checkBox = document.getElementById("read-toggle");
     let isRead = false;
 
     if (checkBox.checked) {
@@ -49,8 +49,11 @@ function addBook() {
 function generateCard(book) {
     const bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
+    const titleDiv = document.createElement('div');
+    titleDiv.classList.add('book-card-title');
     const titleHeader = document.createElement('h3');
     titleHeader.textContent = book.title;
+    titleDiv.appendChild(titleHeader);
     const authorText = document.createElement('p');
     authorText.textContent = book.author;
     const pagesText = document.createElement('p');
@@ -97,12 +100,17 @@ function generateCard(book) {
     });
     
     readDiv.appendChild(readStatusBtn);
-    bookCard.appendChild(titleHeader);
+    bookCard.appendChild(titleDiv);
     bookCard.appendChild(authorText);
     bookCard.appendChild(pagesText);
     bookCard.appendChild(readDiv);
     bookCard.appendChild(deleteBtn);
     libraryGrid.appendChild(bookCard);
+
+    //reset all input field values
+    const inputFields = document.querySelectorAll("input.input-box");
+    inputFields.forEach((inputField) => inputField.value = '');
+    checkBox.checked = false;
 }
 
 //generate books to populate the library
